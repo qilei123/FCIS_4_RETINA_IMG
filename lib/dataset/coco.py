@@ -141,7 +141,7 @@ class coco(IMDB):
         """ example: images / train2014 / COCO_train2014_000000119993.jpg """
         filename = 'COCO_%s_%012d.jpg' % (self.data_name, index)
         image_path = os.path.join(self.data_path, 'images', self.data_name, filename)
-        #assert os.path.exists(image_path), 'Path does not exist: {}'.format(image_path)
+        assert os.path.exists(image_path), 'Path does not exist: {}'.format(image_path)
         return image_path
 
     def gt_roidb(self):
@@ -310,8 +310,9 @@ class coco(IMDB):
                 overlaps[ix, :] = -1.0
             else:
                 overlaps[ix, cls] = 1.0
-
-        sds_rec = {'image': self.image_path_from_index(index),
+        image_path = os.path.join(self.data_path, self.data_name, im_ann['file_name'])
+        print image_path
+        sds_rec = {'image': image_path,
                    'height': height,
                    'width': width,
                    'boxes': boxes,
