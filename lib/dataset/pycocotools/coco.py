@@ -109,11 +109,7 @@ class COCO:
         
         if 'annotations' in self.dataset and 'categories' in self.dataset:
             catToImgs = {cat['id']: [] for cat in self.dataset['categories']}
-            print self.dataset['categories']
             for ann in self.dataset['annotations']:
-                print catToImgs
-                print ann['category_id']
-                print ann['image_id']
                 catToImgs[ann['category_id']] += [ann['image_id']]
 
         print 'index created!'
