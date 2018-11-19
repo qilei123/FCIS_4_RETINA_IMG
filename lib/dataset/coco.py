@@ -141,7 +141,7 @@ class coco(IMDB):
         """ example: images / train2014 / COCO_train2014_000000119993.jpg """
         filename = 'COCO_%s_%012d.jpg' % (self.data_name, index)
         image_path = os.path.join(self.data_path, 'images', self.data_name, filename)
-        assert os.path.exists(image_path), 'Path does not exist: {}'.format(image_path)
+        #assert os.path.exists(image_path), 'Path does not exist: {}'.format(image_path)
         return image_path
 
     def gt_roidb(self):
@@ -173,7 +173,6 @@ class coco(IMDB):
         """
         # for internal useage
         tic();
-        print self.image_set_index
         gt_sdsdb_temp = [self.load_coco_sds_annotation(index) for index in self.image_set_index]
         gt_sdsdb = [x[0] for x in gt_sdsdb_temp]
         print 'prepare gt_sdsdb using', toc(), 'seconds';
