@@ -1,8 +1,8 @@
 ---
 MXNET_VERSION: "mxnet"
-output_path: "./output/fcis/coco"
+output_path: "/home/qileimail123/data0/RetinaImg/ROP_COCO/output/baseline1"
 symbol: resnet_v1_101_fcis
-gpus: '0,1,2,3,4,5,6,7'
+gpus: '0'
 CLASS_AGNOSTIC: true
 SCALES:
 - 600
@@ -13,7 +13,7 @@ default:
   frequent: 100
   kvstore: device
 network:
-  pretrained: "./model/pretrained_model/resnet_v1_101"
+  pretrained: "/home/qileimail123/data0/RetinaImg/pretrained_model/resnet_v1_101"
   pretrained_epoch: 0
   PIXEL_MEANS:
   - 103.06
@@ -51,12 +51,12 @@ network:
   - 32
   NUM_ANCHORS: 12
 dataset:
-  NUM_CLASSES: 81
+  NUM_CLASSES: 11
   dataset: coco
-  dataset_path: "./data/coco"
-  image_set: train2014+valminusminival2014
-  root_path: "./data"
-  test_image_set: test-dev2015
+  dataset_path: "/home/qileimail123/data0/RetinaImg/ROP_COCO"
+  image_set: train2014
+  root_path: "/home/qileimail123/data0/RetinaImg"
+  test_image_set: val2014
   proposal: rpn
 TRAIN:
   lr: 0.0005
