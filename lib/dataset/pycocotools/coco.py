@@ -76,6 +76,7 @@ class COCO:
         if not annotation_file == None:
             print 'loading annotations into memory...'
             tic = time.time()
+            print annotation_file
             dataset = json.load(open(annotation_file, 'r'))
             print 'Done (t=%0.2fs)'%(time.time()- tic)
             self.dataset = dataset
