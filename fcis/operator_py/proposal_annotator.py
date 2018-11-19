@@ -141,7 +141,9 @@ class ProposalAnnotatorOperator(mx.operator.CustomOp):
             gt_roi = np.round(gt_boxes[gt_assignment[obj], :-1]).astype(int)
             ex_roi = np.round(rois[idx, 1:]).astype(int)
             print obj
+            print gt_assignment.shape
             print gt_assignment[obj]
+            print gt_masks.shape
             print gt_masks[gt_assignment[obj]]
             gt_mask = gt_masks[gt_assignment[obj]]
             mask_reg_target = intersect_box_mask(ex_roi, gt_roi, gt_mask)
