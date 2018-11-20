@@ -146,7 +146,10 @@ class ProposalAnnotatorOperator(mx.operator.CustomOp):
             print gt_assignment[obj]
             print gt_masks.shape
             print gt_masks[gt_assignment[obj]]
-            
+            shape = gt_masks.shape
+            if gt_assignment[obj]>shape[0]:
+                print 'warning'
+                continue
             gt_mask = gt_masks[gt_assignment[obj]]
             mask_reg_target = intersect_box_mask(ex_roi, gt_roi, gt_mask)
             mask_reg_target = cv2.resize(mask_reg_target.astype(np.float), (self._mask_size, self._mask_size))
