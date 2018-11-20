@@ -140,7 +140,7 @@ class ProposalAnnotatorOperator(mx.operator.CustomOp):
         for idx, obj in enumerate(fg_indexes):
             gt_roi = np.round(gt_boxes[gt_assignment[obj], :-1]).astype(int)
             ex_roi = np.round(rois[idx, 1:]).astype(int)
-            
+            '''
             print obj
             print gt_assignment.shape
             print gt_assignment[obj]
@@ -151,11 +151,12 @@ class ProposalAnnotatorOperator(mx.operator.CustomOp):
             if gt_assignment[obj]>=shape[0]:
                 print 'warning'
             else:
-                gt_mask = gt_masks[gt_assignment[obj]]
-                mask_reg_target = intersect_box_mask(ex_roi, gt_roi, gt_mask)
-                mask_reg_target = cv2.resize(mask_reg_target.astype(np.float), (self._mask_size, self._mask_size))
-                mask_reg_target = mask_reg_target >= self._binary_thresh
-                mask_reg_targets[idx, ...] = mask_reg_target
+            '''
+            gt_mask = gt_masks[gt_assignment[obj]]
+            mask_reg_target = intersect_box_mask(ex_roi, gt_roi, gt_mask)
+            mask_reg_target = cv2.resize(mask_reg_target.astype(np.float), (self._mask_size, self._mask_size))
+            mask_reg_target = mask_reg_target >= self._binary_thresh
+            mask_reg_targets[idx, ...] = mask_reg_target
 
         return rois, labels, bbox_targets, bbox_weights, mask_reg_targets
 
