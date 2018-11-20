@@ -145,7 +145,7 @@ class ProposalAnnotatorOperator(mx.operator.CustomOp):
             print gt_assignment.shape
             print gt_assignment[obj]
             print gt_masks.shape
-            print gt_masks[gt_assignment[obj]]
+            #print gt_masks[gt_assignment[obj]]
             shape = gt_masks.shape
             if gt_assignment[obj]>shape[0]:
                 print 'warning'
