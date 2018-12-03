@@ -26,6 +26,8 @@ class WarmupMultiFactorScheduler(LRScheduler):
     """
     def __init__(self, step, factor=1, warmup=False, warmup_lr=0, warmup_step=0):
         super(WarmupMultiFactorScheduler, self).__init__()
+        print len(step)
+        print isinstance(step,list)
         assert isinstance(step, list) and len(step) >= 1
         for i, _step in enumerate(step):
             if i != 0 and step[i] <= step[i-1]:
