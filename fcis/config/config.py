@@ -34,7 +34,7 @@ config.default.kvstore = 'device'
 # network related params
 config.network = edict()
 config.network.pretrained = './model/pretrained_model/resnet_v2_101'
-config.network.pretrained_epoch = 0
+config.network.pretrained_epoch = 8
 config.network.PIXEL_MEANS = np.array([0, 0, 0])
 config.network.IMAGE_STRIDE = 0
 config.network.RPN_FEAT_STRIDE = 16
