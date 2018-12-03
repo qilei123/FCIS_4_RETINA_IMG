@@ -65,7 +65,7 @@ TRAIN:
   warmup_lr: 0.00005
   # typically we will use 4000 warmup step for single GPU
   warmup_step: 250
-  begin_epoch: 0
+  begin_epoch: 8
   end_epoch: 18
   model_prefix: 'e2e_ROP'
   # whether resume training
