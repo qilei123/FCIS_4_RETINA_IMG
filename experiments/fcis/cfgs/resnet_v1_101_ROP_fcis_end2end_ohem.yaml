@@ -14,7 +14,7 @@ default:
   kvstore: device
 network:
   pretrained: "/home/qileimail123/data0/RetinaImg/pretrained_model/resnet_v1_101"
-  pretrained_epoch: 8
+  pretrained_epoch: 0
   PIXEL_MEANS:
   - 103.06
   - 115.90
