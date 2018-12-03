@@ -69,7 +69,7 @@ TRAIN:
   end_epoch: 18
   model_prefix: 'e2e_ROP'
   # whether resume training
-  RESUME: false
+  RESUME: true
   # whether flip image
   FLIP: true
   # whether shuffle image
