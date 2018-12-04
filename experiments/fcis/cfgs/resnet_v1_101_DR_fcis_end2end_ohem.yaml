@@ -161,5 +161,5 @@ TEST:
   # ITER 2 & mask merge
   ITER: 2
   MIN_DROP_SIZE: 2
-  USE_MASK_MERGE: true
-  USE_GPU_MASK_MERGE: true
+  USE_MASK_MERGE: false
+  USE_GPU_MASK_MERGE: false
