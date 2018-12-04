@@ -16,7 +16,7 @@ import cv2
 import os
 import json
 import numpy as np
-
+import sys
 from imdb import IMDB
 
 # coco api
@@ -29,7 +29,9 @@ from utils.tictoc import tic, toc
 import hickle as hkl
 from bbox.bbox_transform import clip_boxes
 import multiprocessing.dummy as mp
-
+this_dir = os.path.dirname(__file__)
+sys.path.insert(0, os.path.join(this_dir, '..', '..', 'fcis'))
+from config.config import config
 def coco_results_one_category_kernel(data_pack):
     cat_id = data_pack['cat_id']
     ann_type = data_pack['ann_type']
@@ -328,7 +330,7 @@ class coco(IMDB):
         res_folder = os.path.join(self.result_path, 'results')
         if not os.path.exists(res_folder):
             os.makedirs(res_folder)
-        res_file = os.path.join(res_folder, 'detections_%s_results.json' % self.image_set)
+        res_file = os.path.join(res_folder, 'fcis_'+str(config.TEST.test_epoch)+'detections_%s_results.json' % self.image_set)
         self._write_coco_results(detections, res_file, ann_type)
         if 'test' not in self.image_set:
             info_str = self._do_python_eval(res_file, res_folder, ann_type)
@@ -390,7 +392,7 @@ class coco(IMDB):
         coco_eval.accumulate()
         info_str = self._print_detection_metrics(coco_eval)
 
-        eval_file = os.path.join(res_folder, 'detections_%s_results.pkl' % self.image_set)
+        eval_file = os.path.join(res_folder, 'fcis_'+str(config.TEST.test_epoch)+'detections_%s_results.pkl' % self.image_set)
         with open(eval_file, 'w') as f:
             cPickle.dump(coco_eval, f, cPickle.HIGHEST_PROTOCOL)
         print 'coco eval results saved to %s' % eval_file
@@ -399,7 +401,7 @@ class coco(IMDB):
 
     def _print_detection_metrics(self, coco_eval):
         info_str = ''
-        IoU_lo_thresh = 0.5
+        IoU_lo_thresh = 0.2
         IoU_hi_thresh = 0.95
 
         def _get_thr_ind(coco_eval, thr):
