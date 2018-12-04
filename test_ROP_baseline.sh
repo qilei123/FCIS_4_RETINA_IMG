@@ -1,0 +1,1 @@
+python experiments/fcis/fcis_end2end_test.py --cfg experiments/fcis/cfgs/resnet_v1_101_ROP_fcis_end2end_ohem.yaml
