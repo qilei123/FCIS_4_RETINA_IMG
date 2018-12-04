@@ -16,6 +16,7 @@ import os
 import time
 import mxnet as mx
 import numpy as np
+import sys
 
 from module import MutableModule
 from utils import image
