@@ -330,7 +330,7 @@ class coco(IMDB):
         res_folder = os.path.join(self.result_path, 'results')
         if not os.path.exists(res_folder):
             os.makedirs(res_folder)
-        res_file = os.path.join(res_folder, 'fcis_'+str(config.TEST.test_epoch)+'detections_%s_results.json' % self.image_set)
+        res_file = os.path.join(res_folder, 'fcis_'+str(config.TEST.test_epoch)+'_detections_%s_results.json' % self.image_set)
         self._write_coco_results(detections, res_file, ann_type)
         if 'test' not in self.image_set:
             info_str = self._do_python_eval(res_file, res_folder, ann_type)
@@ -392,7 +392,7 @@ class coco(IMDB):
         coco_eval.accumulate()
         info_str = self._print_detection_metrics(coco_eval)
 
-        eval_file = os.path.join(res_folder, 'fcis_'+str(config.TEST.test_epoch)+'detections_%s_results.pkl' % self.image_set)
+        eval_file = os.path.join(res_folder, 'fcis_'+str(config.TEST.test_epoch)+'_detections_%s_results.pkl' % self.image_set)
         with open(eval_file, 'w') as f:
             cPickle.dump(coco_eval, f, cPickle.HIGHEST_PROTOCOL)
         print 'coco eval results saved to %s' % eval_file

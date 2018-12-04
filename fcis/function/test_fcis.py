@@ -43,7 +43,7 @@ def test_fcis(config, dataset, image_set, root_path, dataset_path,
 
     # get test data iter
     test_data = TestLoader(sdsdb, config, batch_size=len(ctx), shuffle=shuffle, has_rpn=has_rpn)
-
+    print 'actually:'+str(epoch)
     # load model
     arg_params, aux_params = load_param(prefix, epoch, process=False)
 
