@@ -24,7 +24,9 @@ from nms.nms import py_nms_wrapper
 from utils.PrefetchingIter import PrefetchingIter
 from mask.mask_transform import gpu_mask_voting, cpu_mask_voting
 
-
+this_dir = os.path.dirname(__file__)
+sys.path.insert(0, os.path.join(this_dir, '..', 'fcis'))
+from config.config import config
 class Predictor(object):
     def __init__(self, symbol, data_names, label_names,
                  context=mx.cpu(), max_data_shapes=None,
@@ -73,8 +75,8 @@ def im_detect(predictor, data_batch, data_names, scales, cfg):
 
 def pred_eval(predictor, test_data, imdb, cfg, vis=False, thresh=1e-3, logger=None, ignore_cache=False):
 
-    det_file = os.path.join(imdb.result_path, imdb.name + '_detections.pkl')
-    seg_file = os.path.join(imdb.result_path, imdb.name + '_masks.pkl')
+    det_file = os.path.join(imdb.result_path, 'fcis_'+str(config.TEST.test_epoch)+'_'+imdb.name + '_detections.pkl')
+    seg_file = os.path.join(imdb.result_path, 'fcis_'+str(config.TEST.test_epoch)+'_'+imdb.name + '_masks.pkl')
 
     if os.path.exists(det_file) and os.path.exists(seg_file) and not ignore_cache:
         with open(det_file, 'rb') as f:
