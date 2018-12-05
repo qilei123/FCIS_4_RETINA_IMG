@@ -56,7 +56,7 @@ dataset:
   dataset_path: "/home/qileimail123/data0/RetinaImg/ROP_COCO"
   image_set: train2014
   root_path: "/home/qileimail123/data0/RetinaImg/ROP_COCO"
-  test_image_set: val2014
+  test_image_set: train2014
   proposal: rpn
 TRAIN:
   lr: 0.0005
