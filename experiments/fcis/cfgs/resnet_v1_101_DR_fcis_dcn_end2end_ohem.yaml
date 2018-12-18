@@ -1,6 +1,6 @@
 ---
 MXNET_VERSION: "python"
-output_path: "/home/qileimail123/data0/RetinaImg/DR_COCO/output/baseline1"
+output_path: "/home/qileimail123/data0/RetinaImg/DR_COCO/output/with_dcn_v1"
 symbol: resnet_v1_101_fcis_dcn
 gpus: '0,1,2,3'
 CLASS_AGNOSTIC: true
@@ -65,7 +65,7 @@ TRAIN:
   warmup_lr: 0.00005
   # typically we will use 4000 warmup step for single GPU
   warmup_step: 250
-  begin_epoch: 13
+  begin_epoch: 0
   end_epoch: 100
   model_prefix: 'e2e_DR'
   # whether resume training
