@@ -14,7 +14,7 @@ from operator_py.box_parser import *
 from operator_py.box_annotator_ohem import *
 
 
-class resnet_v1_101_fcis(Symbol):
+class resnet_v1_101_fcis_dcn_v2(Symbol):
 
     def __init__(self):
         """
