@@ -69,7 +69,7 @@ TRAIN:
   end_epoch: 100
   model_prefix: 'e2e_DR'
   # whether resume training
-  RESUME: true
+  RESUME: false
   # whether flip image
   FLIP: true
   # whether shuffle image
