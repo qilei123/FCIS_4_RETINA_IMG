@@ -710,7 +710,7 @@ class resnet_v1_101_fcis_dcn_v1(Symbol):
         res5a_branch2b_offset = mx.symbol.Convolution(name='res5a_branch2b_offset', data = res5a_branch2a_relu,
                                                       num_filter=72, pad=(2, 2), kernel=(3, 3), stride=(1, 1), dilate=(2, 2), cudnn_off=True)
         res5a_branch2b = mx.contrib.symbol.DeformableConvolution(name='res5a_branch2b', data=res5a_branch2a_relu, offset=res5a_branch2b_offset,
-                                                                 num_filter=512, pad=(2, 2), kernel=(3, 3), num_deformable_group=1,
+                                                                 num_filter=512, pad=(2, 2), kernel=(3, 3), num_deformable_group=4,
                                                                  stride=(1, 1), dilate=(2, 2), no_bias=True)
         bn5a_branch2b = mx.symbol.BatchNorm(name='bn5a_branch2b', data=res5a_branch2b, use_global_stats=True,
                                             fix_gamma=False, eps=self.eps)
@@ -732,7 +732,7 @@ class resnet_v1_101_fcis_dcn_v1(Symbol):
         res5b_branch2b_offset = mx.symbol.Convolution(name='res5b_branch2b_offset', data = res5b_branch2a_relu,
                                                       num_filter=72, pad=(2, 2), kernel=(3, 3), stride=(1, 1), dilate=(2, 2), cudnn_off=True)
         res5b_branch2b = mx.contrib.symbol.DeformableConvolution(name='res5b_branch2b', data=res5b_branch2a_relu, offset=res5b_branch2b_offset,
-                                                                 num_filter=512, pad=(2, 2), kernel=(3, 3), num_deformable_group=1,
+                                                                 num_filter=512, pad=(2, 2), kernel=(3, 3), num_deformable_group=4,
                                                                  stride=(1, 1), dilate=(2, 2), no_bias=True)
         bn5b_branch2b = mx.symbol.BatchNorm(name='bn5b_branch2b', data=res5b_branch2b, use_global_stats=True,
                                             fix_gamma=False, eps=self.eps)
@@ -754,7 +754,7 @@ class resnet_v1_101_fcis_dcn_v1(Symbol):
         res5c_branch2b_offset = mx.symbol.Convolution(name='res5c_branch2b_offset', data = res5c_branch2a_relu,
                                                       num_filter=72, pad=(2, 2), kernel=(3, 3), stride=(1, 1), dilate=(2, 2), cudnn_off=True)
         res5c_branch2b = mx.contrib.symbol.DeformableConvolution(name='res5c_branch2b', data=res5c_branch2a_relu, offset=res5c_branch2b_offset,
-                                                                 num_filter=512, pad=(2, 2), kernel=(3, 3), num_deformable_group=1,
+                                                                 num_filter=512, pad=(2, 2), kernel=(3, 3), num_deformable_group=4,
                                                                  stride=(1, 1), dilate=(2, 2), no_bias=True)
         bn5c_branch2b = mx.symbol.BatchNorm(name='bn5c_branch2b', data=res5c_branch2b, use_global_stats=True,
                                             fix_gamma=False, eps=self.eps)
