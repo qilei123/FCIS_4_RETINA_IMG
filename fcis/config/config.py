@@ -41,8 +41,8 @@ config.network.RPN_FEAT_STRIDE = 16
 config.network.RCNN_FEAT_STRIDE = 16
 config.network.FIXED_PARAMS = ['conv0', 'stage1', 'gamma', 'beta']
 config.network.FIXED_PARAMS_SHARED = ['conv0', 'stage1', 'stage2', 'stage3', 'gamma', 'beta']
-config.network.ANCHOR_SCALES = (8, 16, 32)
-config.network.ANCHOR_RATIOS = (0.5, 1, 2)
+config.network.ANCHOR_SCALES = (4, 8, 16, 32)
+config.network.ANCHOR_RATIOS = (0.25, 0.5, 1, 2)
 config.network.NUM_ANCHORS = len(config.network.ANCHOR_SCALES) * len(config.network.ANCHOR_RATIOS)
 
 # dataset related params
