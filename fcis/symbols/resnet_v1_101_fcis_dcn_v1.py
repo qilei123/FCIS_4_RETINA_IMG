@@ -987,7 +987,7 @@ class resnet_v1_101_fcis_dcn_v1(Symbol):
                                           name='fcis_cls_seg')
         fcis_bbox = mx.sym.Convolution(data=relu_new_1, kernel=(1, 1), num_filter=7*7*4*num_reg_classes,
                                        name='fcis_bbox')
-        '''
+        
         psroipool_cls_seg = mx.contrib.sym.PSROIPooling(name='psroipool_cls_seg', data=fcis_cls_seg, rois=rois,
                                                         group_size=7, pooled_size=21, output_dim=num_classes*2, spatial_scale=0.0625)
         '''
@@ -1045,6 +1045,7 @@ class resnet_v1_101_fcis_dcn_v1(Symbol):
                                                                     output_dim=num_classes*4, 
                                                                     spatial_scale=0.0625, 
                                                                     trans_std=0.1) 
+        '''
         if is_train:
             # classification path
             psroipool_cls = mx.contrib.sym.ChannelOperator(name='psroipool_cls', data=psroipool_cls_seg, group=num_classes, op_type='Group_Max')
