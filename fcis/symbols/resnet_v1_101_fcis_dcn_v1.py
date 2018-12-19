@@ -923,7 +923,7 @@ class resnet_v1_101_fcis_dcn_v1(Symbol):
                                           name='fcis_cls_seg')
         fcis_bbox = mx.sym.Convolution(data=relu_new_1, kernel=(1, 1), num_filter=7*7*4*num_reg_classes,
                                        name='fcis_bbox')
-        '''
+        
         psroipool_cls_seg = mx.contrib.sym.PSROIPooling(name='psroipool_cls_seg', data=fcis_cls_seg, rois=rois,
                                                         group_size=7, pooled_size=21, output_dim=num_classes*2, spatial_scale=0.0625)
         psroipool_bbox_pred = mx.contrib.sym.PSROIPooling(name='psroipool_bbox', data=fcis_bbox, rois=rois,
@@ -944,7 +944,7 @@ class resnet_v1_101_fcis_dcn_v1(Symbol):
         psroipool_bbox_pred = mx.contrib.sym.DeformablePSROIPooling(name='psroipool_bbox_pred', data=fcis_bbox, rois=rois, trans=fcis_bbox_offset,
                                                                      group_size=7, pooled_size=21, sample_per_part=4, no_trans=False, trans_std=0.1,
                                                                      output_dim=8, spatial_scale=0.0625, part_size=7)        
-
+        '''
         if is_train:
             # classification path
             psroipool_cls = mx.contrib.sym.ChannelOperator(name='psroipool_cls', data=psroipool_cls_seg, group=num_classes, op_type='Group_Max')
@@ -1057,13 +1057,13 @@ class resnet_v1_101_fcis_dcn_v1(Symbol):
         
         arg_params['res5c_branch2b_offset_weight'] = mx.nd.zeros(shape = self.arg_shape_dict['res5c_branch2b_offset_weight'])
         arg_params['res5c_branch2b_offset_bias'] = mx.nd.zeros(shape = self.arg_shape_dict['res5c_branch2b_offset_bias'])
-
+'''
         arg_params['fcis_cls_seg_offset_t_weight'] = mx.nd.zeros(shape = self.arg_shape_dict['fcis_cls_seg_offset_t_weight'])
         arg_params['fcis_cls_seg_offset_t_bias'] = mx.nd.zeros(shape = self.arg_shape_dict['fcis_cls_seg_offset_t_bias'])
 
         arg_params['fcis_bbox_offset_t_weight'] = mx.nd.zeros(shape = self.arg_shape_dict['fcis_bbox_offset_t_weight'])
         arg_params['fcis_bbox_offset_t_bias'] = mx.nd.zeros(shape = self.arg_shape_dict['fcis_bbox_offset_t_bias'])
-
+'''
 
         arg_params['rpn_conv_3x3_weight'] = mx.random.normal(0, 0.01, shape=self.arg_shape_dict['rpn_conv_3x3_weight'])
         arg_params['rpn_conv_3x3_bias'] = mx.nd.zeros(shape=self.arg_shape_dict['rpn_conv_3x3_bias'])
