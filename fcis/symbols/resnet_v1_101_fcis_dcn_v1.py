@@ -933,16 +933,16 @@ class resnet_v1_101_fcis_dcn_v1(Symbol):
         fcis_cls_seg_offset_t = mx.sym.Convolution(data=relu_new_1, kernel=(1, 1), num_filter=2 * 7 * 7 * num_classes * 2, name="fcis_cls_seg_offset_t")
         fcis_bbox_offset_t = mx.sym.Convolution(data=relu_new_1, kernel=(1, 1), num_filter=7 * 7 * 2, name="fcis_bbox_offset_t")
 
-        fcis_cls_seg_offset = mx.contrib.sym.DeformablePSROIPooling(name='fcis_cls_seg_offset', data=fcis_cls_seg_offset_t, rois=rois, group_size=7, pooled_size=7,
+        fcis_cls_seg_offset = mx.contrib.sym.DeformablePSROIPooling(name='fcis_cls_seg_offset', data=fcis_cls_seg_offset_t, rois=rois, group_size=7, pooled_size=21,
                                                                 sample_per_part=4, no_trans=True, part_size=7, output_dim=2 * num_classes, spatial_scale=0.0625)
-        fcis_bbox_offset = mx.contrib.sym.DeformablePSROIPooling(name='fcis_bbox_offset', data=fcis_bbox_offset_t, rois=rois, group_size=7, pooled_size=7,
+        fcis_bbox_offset = mx.contrib.sym.DeformablePSROIPooling(name='fcis_bbox_offset', data=fcis_bbox_offset_t, rois=rois, group_size=7, pooled_size=21,
                                                                  sample_per_part=4, no_trans=True, part_size=7, output_dim=2, spatial_scale=0.0625)
 
         psroipool_cls_seg = mx.contrib.sym.DeformablePSROIPooling(name='psroipool_cls_seg', data=fcis_cls_seg, rois=rois, trans=fcis_cls_seg_offset,
-                                                                     group_size=7, pooled_size=7, sample_per_part=4, no_trans=False, trans_std=0.1,
+                                                                     group_size=7, pooled_size=21, sample_per_part=4, no_trans=False, trans_std=0.1,
                                                                      output_dim=num_classes, spatial_scale=0.0625, part_size=7)
         psroipool_bbox_pred = mx.contrib.sym.DeformablePSROIPooling(name='psroipool_bbox_pred', data=fcis_bbox, rois=rois, trans=fcis_bbox_offset,
-                                                                     group_size=7, pooled_size=7, sample_per_part=4, no_trans=False, trans_std=0.1,
+                                                                     group_size=7, pooled_size=21, sample_per_part=4, no_trans=False, trans_std=0.1,
                                                                      output_dim=8, spatial_scale=0.0625, part_size=7)        
 
         if is_train:
