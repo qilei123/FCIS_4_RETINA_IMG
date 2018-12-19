@@ -613,7 +613,7 @@ class resnet_v1_101_fcis_dcn_v1(Symbol):
                                                         num_filter=18, pad=(1, 1), kernel=(3, 3), stride=(1, 1),
                                                         weight=res4b22_branch2b_offset_weight, bias=res4b22_branch2b_offset_bias)
         res4b22_branch2b = mx.contrib.symbol.DeformableConvolution(name='res4b22_branch2b', data=res4b22_branch2a_relu, offset=res4b22_branch2b_offset,
-                                                                 num_filter=512, pad=(2, 2), kernel=(3, 3), num_deformable_group=1,
+                                                                 num_filter=256, pad=(2, 2), kernel=(3, 3), num_deformable_group=1,
                                                                  stride=(1, 1), dilate=(2, 2), no_bias=True)
         
         
