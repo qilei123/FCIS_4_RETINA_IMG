@@ -1057,13 +1057,13 @@ class resnet_v1_101_fcis_dcn_v1(Symbol):
         
         arg_params['res5c_branch2b_offset_weight'] = mx.nd.zeros(shape = self.arg_shape_dict['res5c_branch2b_offset_weight'])
         arg_params['res5c_branch2b_offset_bias'] = mx.nd.zeros(shape = self.arg_shape_dict['res5c_branch2b_offset_bias'])
-        '''
+        #'''
         arg_params['fcis_cls_seg_offset_t_weight'] = mx.nd.zeros(shape = self.arg_shape_dict['fcis_cls_seg_offset_t_weight'])
         arg_params['fcis_cls_seg_offset_t_bias'] = mx.nd.zeros(shape = self.arg_shape_dict['fcis_cls_seg_offset_t_bias'])
 
         arg_params['fcis_bbox_offset_t_weight'] = mx.nd.zeros(shape = self.arg_shape_dict['fcis_bbox_offset_t_weight'])
         arg_params['fcis_bbox_offset_t_bias'] = mx.nd.zeros(shape = self.arg_shape_dict['fcis_bbox_offset_t_bias'])
-        '''
+        #'''
 
         arg_params['rpn_conv_3x3_weight'] = mx.random.normal(0, 0.01, shape=self.arg_shape_dict['rpn_conv_3x3_weight'])
         arg_params['rpn_conv_3x3_bias'] = mx.nd.zeros(shape=self.arg_shape_dict['rpn_conv_3x3_bias'])
