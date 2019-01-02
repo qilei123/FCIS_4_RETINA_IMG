@@ -10,7 +10,7 @@ import test
 
 if __name__ == "__main__":
     test_epoch_list = [config.test_epoch]
-    for test_epoch in test_epoch_list:
+    for test_epoch in range(1,100):
         print 'test_epoch:'+str(test_epoch)
         config.TEST.test_epoch = test_epoch
         test.main()
