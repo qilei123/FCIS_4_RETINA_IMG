@@ -9,7 +9,7 @@ from config.config import config
 import test
 
 if __name__ == "__main__":
-    test_epoch_list = [43]
+    test_epoch_list = [config.test_epoch]
     for test_epoch in test_epoch_list:
         print 'test_epoch:'+str(test_epoch)
         config.TEST.test_epoch = test_epoch

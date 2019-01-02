@@ -34,13 +34,14 @@ def parse_args():
     parser.add_argument('--ignore_cache', help='ignore cached results boxes', action='store_true')
     parser.add_argument('--thresh', help='valid detection threshold', default=1e-3, type=float)
     parser.add_argument('--shuffle', help='shuffle data on visualization', action='store_true')
+    parser.add_argument('--test_epoch',help='test epoch',default = 8,type=int)
     args = parser.parse_args()
     return args
 
 args = parse_args()
 curr_path = os.path.abspath(os.path.dirname(__file__))
 sys.path.insert(0, os.path.join(curr_path, '../external/mxnet', config.MXNET_VERSION))
-
+config.test_epoch = args.test_epoch
 
 import mxnet as mx
 from function.test_fcis import test_fcis
