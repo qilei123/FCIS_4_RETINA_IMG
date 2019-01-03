@@ -50,6 +50,7 @@ from utils.create_logger import create_logger
 
 def main():
     ctx = [mx.gpu(int(i)) for i in config.gpus.split(',')]
+    print ctx
     print args
     logger, final_output_path = create_logger(config.output_path, args.cfg, config.dataset.test_image_set)
     print 'final_output_path:'+final_output_path
